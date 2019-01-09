@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemCommunity"
+        android:icon="@drawable/community"
+        android:title="community" />
+
+    <item
+        android:id="@+id/itemSport"
+        android:icon="@drawable/sports"
+        android:title="sport" />
+
+    <item
+        android:id="@+id/itemWatch"
+        android:icon="@drawable/watchs"
+        android:title="watch" />
+    <item
+        android:id="@+id/itemPlan"
+        android:icon="@drawable/records"
+        android:title="plan" />
+    <item
+        android:id="@+id/itemMyself"
+        android:icon="@drawable/user"
+        android:title="user" />
+</menu>
