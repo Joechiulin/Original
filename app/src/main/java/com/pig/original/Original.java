@@ -11,11 +11,12 @@ import android.view.MenuItem;
 
 import com.pig.original.plan.PlanFragment;
 import com.pig.original.sport.SportFragment;
+import com.pig.original.user.Friendlistfragement;
 import com.pig.original.user.UserFragment;
 import com.pig.original.watch.WatchFragment;
 
 public class Original extends AppCompatActivity {
-    private BottomNavigationView oriNavigation;
+    private BottomNavigationView oriNavigation,navigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -36,7 +37,28 @@ public class Original extends AppCompatActivity {
                     fragment =new PlanFragment();
                     break;
                 case R.id.itemMyself:
-                    fragment=new UserFragment();
+                    fragment=new Friendlistfragement();
+                    break;
+
+            }
+            item.setChecked( true );
+            //選取選項反藍
+            changeFragment( fragment );
+            setTitle( item.getTitle() );
+            return false;
+        }
+    };
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = null;
+            switch (item.getItemId()) {
+                case R.id.itemAchievement:
+                    fragment= new Friendlistfragement();
+                case  R.id.itemFriends:
+                    fragment= new Friendlistfragement();
                     break;
             }
             item.setChecked( true );
