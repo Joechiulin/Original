@@ -16,7 +16,7 @@ import com.pig.original.user.UserFragment;
 import com.pig.original.watch.WatchFragment;
 
 public class Original extends AppCompatActivity {
-    private BottomNavigationView oriNavigation,navigationView;
+    private BottomNavigationView oriNavigation;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -37,7 +37,7 @@ public class Original extends AppCompatActivity {
                     fragment =new PlanFragment();
                     break;
                 case R.id.itemMyself:
-                    fragment=new Friendlistfragement();
+                    fragment=new UserFragment();
                     break;
 
             }
@@ -48,26 +48,7 @@ public class Original extends AppCompatActivity {
             return false;
         }
     };
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment = null;
-            switch (item.getItemId()) {
-                case R.id.itemAchievement:
-                    fragment= new Friendlistfragement();
-                case  R.id.itemFriends:
-                    fragment= new Friendlistfragement();
-                    break;
-            }
-            item.setChecked( true );
-            //選取選項反藍
-            changeFragment( fragment );
-            setTitle( item.getTitle() );
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

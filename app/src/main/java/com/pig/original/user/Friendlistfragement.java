@@ -161,7 +161,7 @@ public class Friendlistfragement extends Fragment {
             myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Fragment fragment = new UserFragment();
+                    Fragment fragment = new UserPersonalFragement();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("friend", friend);
                     fragment.setArguments(bundle);
