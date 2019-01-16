@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -8,16 +8,37 @@
     tools:context=".CommunityFragment"
     >
 
-    <TextView
-        android:id="@+id/tvCommunity"
-        android:text="community"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/comswipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvcommunity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <!-- build.gradle (Module:app) must add [com.android.support:design] API -->
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/comcoordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/communityAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="400dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_add"
+                app:elevation="6dp"
+                app:rippleColor="#FFFFFF" />
+        </android.support.design.widget.CoordinatorLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

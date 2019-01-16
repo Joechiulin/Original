@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/communitycardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:padding="6dp"
+    card_view:cardBackgroundColor="#ffdddddd"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivcommunityimage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/tvcommunityname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/ivFriend"
+            android:text="Name"
+            android:layout_toEndOf="@id/ivcommunityimage"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvcommunityLogintime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvcommunityname"
+            android:layout_alignStart="@+id/tvcommunityname"
+            android:layout_alignLeft="@id/tvName"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:text="time"
+            android:textColor="#555555" />
+
+        <TextView
+            android:id="@+id/tvcommunityLastloginRegion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvcommunityLogintime"
+            android:layout_alignStart="@+id/tvcommunityLogintime"
+            android:layout_alignLeft="@id/tvName"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/tvpost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/tvcommunityLastloginRegion"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="9dp"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/imagephoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvpost"
+            android:layout_alignStart="@+id/tvpost"
+            android:layout_alignEnd="@+id/tvpost"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            card_view:srcCompat="@android:drawable/sym_def_app_icon" />
+
+        <ImageButton
+            android:id="@+id/imagebest"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imagephoto"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            card_view:srcCompat="@drawable/ic_add" />
+
+        <ImageButton
+            android:id="@+id/imagepost"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imagephoto"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            card_view:srcCompat="?android:attr/actionModePasteDrawable" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
