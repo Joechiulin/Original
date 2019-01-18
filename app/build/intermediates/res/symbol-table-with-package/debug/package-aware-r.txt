@@ -1124,6 +1124,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addcommunity
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1230,6 +1231,8 @@ id itemPlan
 id itemSport
 id itemWatch
 id item_touch_helper_previous_elevation
+id itempost
+id ivAddcommunity
 id ivFriend
 id ivcommunityimage
 id labeled
@@ -1356,6 +1359,7 @@ id tvKcl
 id tvLastloginRegion
 id tvLogintime
 id tvName
+id tvaddcommunity
 id tvcommunityLastloginRegion
 id tvcommunityLogintime
 id tvcommunityname
@@ -1421,6 +1425,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_original
+layout addcommunity
 layout comfriend
 layout community
 layout communityitemview
@@ -1471,6 +1476,7 @@ layout user
 layout watch
 menu navigation
 menu popup_menu
+menu postmenu
 menu usernavigation
 mipmap ic_launcher
 mipmap ic_launcher_round

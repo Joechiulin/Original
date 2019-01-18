@@ -225,9 +225,10 @@ public class ComFriend extends Fragment {
     private void changeFragment(Fragment fragment) {
         if (getFragmentManager() != null) {
             getFragmentManager().beginTransaction().
-                    replace(R.id.content, fragment).addToBackStack(null).commit();
+                    replace(R.id.oriFrameLayout, fragment).addToBackStack(null).commit();
         }
     }
+
 
 
     @Override
