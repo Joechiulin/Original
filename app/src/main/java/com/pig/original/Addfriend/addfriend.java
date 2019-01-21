@@ -1,6 +1,7 @@
 package com.pig.original.Addfriend;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,6 +35,9 @@ import com.pig.original.Common.Common;
 import com.pig.original.Common.CommonTask;
 import com.pig.original.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
@@ -45,11 +50,12 @@ public class addfriend extends Fragment {
     private FragmentActivity comactivity;
     private FragmentManager fragmentManager;
     private static final int REQ_PICK_IMAGE = 1;
-    private static final int REQ_TAKE_IMAGE = 2;
+    private static final int REQ_CROP_PICTURE = 2;
     Bitmap pictureimage;
     private ImageView Pickpicture;
     private TextView textView;
-    private byte[] image;
+    private byte[] picture;
+    private Uri contentUri, croppedImageUri;
 
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,12 +86,12 @@ public class addfriend extends Fragment {
         btpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = textView.getText().toString().trim();
-                if (name.length() <= 0) {
+                String text = textView.getText().toString().trim();
+                if (text.length() <= 0) {
                     Common.showToast(getActivity(), R.string.msg_NameIsInvalid);
                     return;
                 }
-
+                String name = "aa";
                 String lastloginRegion = "122";
                 String logintime = "111";
 //                List<Address> addressList;
@@ -98,15 +104,15 @@ public class addfriend extends Fragment {
 //                } catch (IOException e) {
 //                    Log.e(TAG, e.toString());
 //                }
-                if (image == null) {
+                if (picture == null) {
                     Common.showToast(getActivity(), R.string.msg_NoImage);
                     return;
                 }
 
                 if (Common.networkConnected(comactivity)) {
                     String url = Common.URL + "/SpotServlet";
-                    Friend spot = new Friend(0, name, logintime, lastloginRegion, latitude, longitude);
-                    String imageBase64 = Base64.encodeToString(image, Base64.DEFAULT);
+                    Friend spot = new Friend(0, name, logintime, lastloginRegion, latitude, longitude, text);
+                    String imageBase64 = Base64.encodeToString(picture, Base64.DEFAULT);
                     JsonObject jsonObject = new JsonObject();
                     jsonObject.addProperty("action", "spotInsert");
                     jsonObject.addProperty("spot", new Gson().toJson(spot));
@@ -158,7 +164,8 @@ public class addfriend extends Fragment {
 //        etPhone = rootView.findViewById(R.id.etPhone);
 //        etAddress = rootView.findViewById(R.id.etAddress);
     }
-//    private BitmapFactory.Options getBitmapOption(int inSampleSize){
+
+    //    private BitmapFactory.Options getBitmapOption(int inSampleSize){
 //        System.gc();
 //        BitmapFactory.Options options = new BitmapFactory.Options();
 //        options.inPurgeable = true;
@@ -166,26 +173,22 @@ public class addfriend extends Fragment {
 //        return options;
 //    }
     public void onStart() {
-    super.onStart();
-    String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    Common.askPermissions(this.getActivity(), permissions, Common.REQ_EXTERNAL_STORAGE);
-    askPermissions();
-}
+        super.onStart();
+        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        Common.askPermissions(this.getActivity(), permissions, Common.REQ_EXTERNAL_STORAGE);
+        askPermissions();
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (resultCode == RESULT_OK) {
             int newSize = 512;
             switch (requestCode) {
-
-                case REQ_TAKE_IMAGE:
-//                    Bitmap srcPicture = BitmapFactory.decodeFile(file.getPath());
-//                    Bitmap downsizedPicture = Common.downSize(srcPicture, newSize);
-//                    imageView.setImageBitmap(downsizedPicture);
-//                    pictureimage = downsizedPicture;
-                    break;
                 case REQ_PICK_IMAGE:
 
                     Uri uri = intent.getData();
+                    crop(uri);
+
                     if (uri != null) {
                         String[] columns = {MediaStore.Images.Media.DATA};
                         Cursor cursor = comactivity.getApplicationContext().getContentResolver().query(uri, columns,
@@ -194,18 +197,62 @@ public class addfriend extends Fragment {
                             String imagePath = cursor.getString(0);
                             cursor.close();
                             Bitmap srcImage = BitmapFactory.decodeFile(imagePath);
-//                            Bitmap srcImage = BitmapFactory.decodeFile(imagePath);
-
-//                            Bitmap downsizedImage = Common.downSize(srcImage, newSize);
-                            Pickpicture.setImageBitmap(srcImage);
-//                            pictureimage = downsizedImage;
+                           Pickpicture.setImageBitmap(srcImage);
 
                         }
+                    }
+                    break;
+
+
+                case REQ_CROP_PICTURE:
+                    Log.d(TAG, "REQ_CROP_PICTURE: " + croppedImageUri.toString());
+                    try {
+                        Bitmap pictures = BitmapFactory.decodeStream(
+                                comactivity.getContentResolver().openInputStream(croppedImageUri));
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        pictures.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                        picture = out.toByteArray();
+                    } catch (FileNotFoundException e) {
+                        Log.e(TAG, e.toString());
                     }
                     break;
             }
         }
 
+    }
+
+    private void crop(Uri sourceImageUri) {
+        File file = comactivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        file = new File(file, "picture_cropped.jpg");
+        croppedImageUri = Uri.fromFile(file);
+        // take care of exceptions
+        try {
+            // call the standard crop action intent (the user device may not support it)
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            // the recipient of this Intent can read soruceImageUri's data
+            cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            // set image source Uri and type
+            cropIntent.setDataAndType(sourceImageUri, "image/*");
+            // send crop message
+            cropIntent.putExtra("crop", "true");
+            // aspect ratio of the cropped area, 0 means user define
+            cropIntent.putExtra("aspectX", 0); // this sets the max width
+            cropIntent.putExtra("aspectY", 0); // this sets the max height
+            // output with and height, 0 keeps original size
+            cropIntent.putExtra("outputX", 0);
+            cropIntent.putExtra("outputY", 0);
+            // whether keep original aspect ratio
+            cropIntent.putExtra("scale", true);
+            cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, croppedImageUri);
+            // whether return data by the intent
+            cropIntent.putExtra("return-data", true);
+            // start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, REQ_CROP_PICTURE);
+        }
+        // respond to users whose devices do not support the crop action
+        catch (ActivityNotFoundException anfe) {
+            Common.showToast(getActivity(), "This device doesn't support the crop action!");
+        }
     }
 
 

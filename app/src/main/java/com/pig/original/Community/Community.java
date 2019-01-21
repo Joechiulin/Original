@@ -27,6 +27,8 @@ import com.pig.original.Common.CommonTask;
 import com.pig.original.ImageTask.ImageTask;
 import com.pig.original.R;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -121,7 +123,7 @@ public class Community extends Fragment {
 
         class MyViewHolder extends RecyclerView.ViewHolder {
             ImageView imageView;
-            TextView tvName, tvLogintime, tvLastloginRegion;
+            TextView tvName, tvLogintime, tvLastloginRegion,text;
 
             MyViewHolder(View itemView) {
                 super(itemView);
@@ -129,6 +131,7 @@ public class Community extends Fragment {
                 tvName = itemView.findViewById(R.id.tvcommunityname);
                 tvLogintime = itemView.findViewById(R.id.tvcommunityLogintime);
                 tvLastloginRegion = itemView.findViewById(R.id.tvcommunityLastloginRegion);
+                text = itemView.findViewById(R.id.tvpost);
             }
         }
 
@@ -154,6 +157,7 @@ public class Community extends Fragment {
             myViewHolder.tvName.setText(friend.getName());
             myViewHolder.tvLogintime.setText(friend.getLogintime());
             myViewHolder.tvLastloginRegion.setText(friend.getLastloginRegion());
+            myViewHolder.text.setText(friend.gettext());
 //            myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
@@ -220,7 +224,7 @@ public class Community extends Fragment {
     private void changeFragment(Fragment fragment) {
         if (getFragmentManager() != null) {
             getFragmentManager().beginTransaction().
-                    replace(R.id.oriFrameLayout, fragment).addToBackStack(null).commit();
+                    replace(R.id.content, fragment).addToBackStack(null).commit();
         }
     }
 

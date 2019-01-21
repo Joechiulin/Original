@@ -11,14 +11,16 @@ public class CommunityPost implements Serializable {
     private String lastloginRegion;
     private double latitude;
     private double longitude;
+    private String text;
 
-    public CommunityPost(int id, String name, String logintime, String lastloginRegion, double latitude, double longitude) {
+    public CommunityPost(int id, String name, String logintime, String lastloginRegion, double latitude, double longitude,String text) {
         this.id = id;
         this.name = name;
         this.logintime = logintime;
         this.lastloginRegion = lastloginRegion;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.text= text;
     }
 
     @Override

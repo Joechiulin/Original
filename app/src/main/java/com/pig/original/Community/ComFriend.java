@@ -47,6 +47,7 @@ public class ComFriend extends Fragment {
     private FragmentActivity comactivity;
     private View comfriend_fragment;
 
+
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comactivity = getActivity();
@@ -72,7 +73,7 @@ public class ComFriend extends Fragment {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = new addfriend();
+                Fragment fragment = new CommunityAdd();
                 changeFragment(fragment);
             }
         });
