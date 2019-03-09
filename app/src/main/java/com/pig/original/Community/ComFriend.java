@@ -34,6 +34,8 @@ import com.pig.original.R;
 import com.pig.original.user.Friendlistfragement;
 import com.pig.original.user.UserPersonalFragement;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -122,19 +124,20 @@ public class ComFriend extends Fragment {
             layoutInflater = LayoutInflater.from(context);
             this.friends = friends;
             /* 螢幕寬度除以4當作將圖的尺寸 */
-            imageSize = getResources().getDisplayMetrics().widthPixels / 4;
+            imageSize = getResources().getDisplayMetrics().widthPixels /2;
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
             ImageView imageView;
-            TextView tvName, tvLogintime, tvLastloginRegion;
+            TextView tvName, tvLogintime, tvLastloginRegion, text;
 
             MyViewHolder(View itemView) {
                 super(itemView);
-                imageView = itemView.findViewById(R.id.ivcommunityimage);
+                imageView = itemView.findViewById(R.id.imagephoto);
                 tvName = itemView.findViewById(R.id.tvcommunityname);
                 tvLogintime = itemView.findViewById(R.id.tvcommunityLogintime);
                 tvLastloginRegion = itemView.findViewById(R.id.tvcommunityLastloginRegion);
+                text = itemView.findViewById(R.id.tvpost);
             }
         }
 
@@ -160,6 +163,9 @@ public class ComFriend extends Fragment {
             myViewHolder.tvName.setText(friend.getName());
             myViewHolder.tvLogintime.setText(friend.getLogintime());
             myViewHolder.tvLastloginRegion.setText(friend.getLastloginRegion());
+            myViewHolder.text.setText(friend.gettext());
+
+
 //            myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
