@@ -17,6 +17,7 @@ public class Common {
     public static final int REQ_EXTERNAL_STORAGE = 0;
     //    public static String URL = "http://192.168.196.189:8080/Spot_MySQL_Web/";
     public static String URL = "http://10.0.2.2:8080/Spot_MySQL_Web";
+    public final static String PREF_FILE = "preference";
     public static void askPermissions(Activity activity, String[] permissions, int requestCode) {
         Set<String> permissionsRequest = new HashSet<>();
         for (String permission : permissions) {

@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tlWatch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="watch"
-        />
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorlight"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabTextColor="@color/white"
+        >
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tiHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/heartbeat" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tiOxygen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bloodoxygen" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tiSleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sleep" />
+    </android.support.design.widget.TabLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpWatch"
+        android:layout_width="match_parent"
+        android:layout_height="468dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

@@ -39,4 +39,10 @@
     <string name="msg_WantToExit">Do you really want to exit?</string>
     <string name="text_Yes">Yes</string>
     <string name="text_No">No</string>
+    <string name="heartbeat">HeartBeat</string>
+    <string name="bloodoxygen">BloodOxygen</string>
+    <string name="sleep">Sleep</string>
+    <string name="heart_no_found">Heart no found</string>
+    <string name="oxygen_no_found">Heart no found</string>
+    <string name="sleep_no_found">Heart no found</string>
 </resources>

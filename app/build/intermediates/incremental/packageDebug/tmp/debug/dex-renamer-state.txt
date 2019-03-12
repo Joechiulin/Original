@@ -1,4 +1,4 @@
-#Mon Jan 21 17:53:05 CST 2019
-base.0=/Users/joe/Desktop/Original0115/app/build/intermediates/transforms/dexMerger/debug/0
+#Fri Feb 08 15:03:05 CST 2019
+base.0=/Users/pig/Desktop/Original0115/app/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

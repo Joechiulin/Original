@@ -622,6 +622,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -638,6 +639,7 @@ color colorAccent
 color colorPrimary
 color colorPrimaryDark
 color colorbtnCreateAccount
+color colorlight
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -735,6 +737,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
+color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -1038,6 +1041,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable blood
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1066,6 +1070,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable heartbeat
 drawable ic_add
 drawable ic_dashboard_black_24dp
 drawable ic_home_black_24dp
@@ -1091,6 +1096,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable records
+drawable sleep
 drawable sports
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1132,6 +1138,7 @@ id all
 id always
 id async
 id auto
+id barChart
 id barrier
 id beginning
 id blocking
@@ -1238,10 +1245,12 @@ id ivcommunityimage
 id labeled
 id largeLabel
 id layout
+id lcOxygen
 id left
 id light
 id line1
 id line3
+id lineChart
 id listMode
 id list_item
 id masked
@@ -1343,10 +1352,14 @@ id text_input_password_toggle
 id textinput_counter
 id textinput_error
 id textinput_helper_text
+id tiHeart
+id tiOxygen
+id tiSleep
 id time
 id title
 id titleDividerNoCustom
 id title_template
+id tlWatch
 id top
 id topPanel
 id touch_outside
@@ -1355,9 +1368,12 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tvAVe
 id tvKcl
 id tvLastloginRegion
 id tvLogintime
+id tvMax
+id tvMin
 id tvName
 id tvaddcommunity
 id tvcommunityLastloginRegion
@@ -1372,6 +1388,7 @@ id up
 id useLogo
 id view_offset_helper
 id visible
+id vpWatch
 id wide
 id withText
 id wrap
@@ -1448,6 +1465,7 @@ layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout friend
 layout frienditemview
+layout heart
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1465,11 +1483,13 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout oxygen
 layout personal
 layout plan
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout sleep
 layout sport
 layout support_simple_spinner_dropdown_item
 layout user
@@ -1521,6 +1541,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
 string appbar_scrolling_view_behavior
+string bloodoxygen
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
@@ -1544,6 +1565,8 @@ string common_signin_button_text
 string common_signin_button_text_long
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string heart_no_found
+string heartbeat
 string hide_bottom_view_on_scroll_behavior
 string msg_ClickAgain
 string msg_DeleteFail
@@ -1561,12 +1584,15 @@ string msg_UpdateFail
 string msg_UpdateSuccess
 string msg_WantToExit
 string mtrl_chip_close_icon_content_description
+string oxygen_no_found
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string search_menu_title
+string sleep
+string sleep_no_found
 string status_bar_notification_info_overflow
 string text_Close
 string text_Delete
